@@ -1,34 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import Container from "./layouts/Container"
+import { useSelector } from 'react-redux';
+import Loading from './components/Loading';
+import Router from './routes/Router';
+import { ToastContainer } from 'react-toastify';
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const initialLoading = useSelector(state => state.auth.loading);
+  if (initialLoading) {
+    return <Loading />;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  
+    <div>
+    <Router />
+    <ToastContainer position="bottom-center" theme="dark" autoClose={3000} />
+  </div>
+
+    
   )
 }
 
