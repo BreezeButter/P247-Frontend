@@ -4,11 +4,15 @@ import { useState } from 'react';
 import Modal from '../components/Modal';
 import RegisterForm from "../features/auth/components/RegisterForm";
 import LoginForm from '../features/auth/components/LoginForm'
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
 
+  const userAuthDone = useSelector(state => state.auth.isAuthenticated)
+
+
   const [open, setOpen] = useState(false);
-  const [modal, setModal] =useState(false)
+  const [modal, setModal] = useState('')
 
   return (
     <>
@@ -30,7 +34,13 @@ export default function Navbar() {
             <Toy />
           </div>
         </div>
-        <div className="flex gap-4 ">
+        {userAuthDone ? (
+          <button
+            className="btn btn-primary "
+          >
+            Member
+          </button>
+        ) : (<div className="flex gap-4 ">
           <button
             className="btn btn-primary "
             onClick={() => {
@@ -38,19 +48,20 @@ export default function Navbar() {
               setOpen(true)
             }
             }
-            >
+          >
             Sign Up
           </button>
-          <button className="btn btn-outline btn-primary"  onClick={() => {
+          <button className="btn btn-outline btn-primary" onClick={() => {
             setOpen(true)
             setModal(true)
-            }}>Login</button>
-        </div>
+          }}>Login</button>
+        </div>)}
+
       </div>
-      { modal ? (  <Modal
+      {modal ? (<Modal
         title="Login" isOpen={open} onClose={() => setOpen(false)}>
         <LoginForm onSuccess={() => setOpen(false)} />
-      </Modal>):( <Modal
+      </Modal>) : (<Modal
         title="Sign up" isOpen={open} onClose={() => setOpen(false)}>
         <RegisterForm onSuccess={() => setOpen(false)} />
       </Modal>)}

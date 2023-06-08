@@ -7,6 +7,8 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
+
+  
   const initialLoading = useSelector(state => state.auth.loading);
   if (initialLoading) {
     return <Loading />;

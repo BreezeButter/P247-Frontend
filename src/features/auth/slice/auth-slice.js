@@ -3,7 +3,7 @@ import * as authService from '../../../api/auth-api';
 import { removeAccessToken, setAccessToken } from '../../../utils/localstorage';
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated : false,
   error: null,
   loading: false,
   user: null,
@@ -31,9 +31,10 @@ export const loginAsync = createAsyncThunk('auth/loginAsync',
   try {
     const res = await authService.login(input);
     console.log( '######RES####',res)
-    // setAccessToken(res.data.accessToken);
-    console.log("res.data.user",res.data.user)
-    console.log("res.data",res.data)
+
+    setAccessToken(res.data.accessToken);
+    // console.log("res.data.user",res.data.user)
+    // console.log("res.data",res.data)
     return res.data;
     // const resFetchMe = await authService.fetchMe();
     // return resFetchMe.data.user;
@@ -42,14 +43,14 @@ export const loginAsync = createAsyncThunk('auth/loginAsync',
   }
 });
 
-// export const fetchMe = createAsyncThunk('auth/fetchMe', async (_, thunkApi) => {
-//   try {
-//     const res = await authService.fetchMe();
-//     return res.data.user;
-//   } catch (err) {
-//     return thunkApi.rejectWithValue(err.response.data.message);
-//   }
-// });
+export const fetchMe = createAsyncThunk('auth/fetchMe', async (_, thunkApi) => {
+  try {
+    const res = await authService.fetchMe();
+    return res.data.user;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.response.data.message);
+  }
+});
 
 // export const logout = createAsyncThunk('auth/logout', async () => {
 //   removeAccessToken();
@@ -99,18 +100,18 @@ const authSlice = createSlice({
         state.loading = true;
       })
 
-      // .addCase(fetchMe.fulfilled, (state, action) => {
-      //   state.isAuthenticated = true;
-      //   state.user = action.payload;
-      //   state.initialLoading = false;
-      // })
-      // .addCase(fetchMe.rejected, (state, action) => {
-      //   state.error = action.payload;
-      //   state.initialLoading = false;
-      // })
-      // .addCase(fetchMe.pending, state => {
-      //   state.initialLoading = true;
-      // })
+      .addCase(fetchMe.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchMe.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading= false;
+      })
+      .addCase(fetchMe.pending, state => {
+        state.loading = true;
+      })
 });
 
 export default authSlice.reducer;
