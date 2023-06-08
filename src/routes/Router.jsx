@@ -6,12 +6,17 @@ import ToyPage from "../page/ToyPage";
 import MemberPage from "../page/MemberPage";
 import AdminPage from "../page/AdminPage";
 import Container from "../layouts/Container";
+import RedirectIfAuth from "../features/auth/components/RedirectifAuth";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Container />,
+    element: (
+      <RedirectIfAuth>
+      <Container />
+      </RedirectIfAuth>
+    ),
     children: [
       {
         path: "/",

@@ -14,12 +14,9 @@ export const registerAsync = createAsyncThunk(
   'auth/registerAsync',
   async (input, thunkApi) => {
     try {
-      
-
         const res =  await authService.register(input);
         setAccessToken(res.data.accessToken);
         return res.data; 
-    
       // const resFetchMe = await authService.fetchMe();
       // console.log(resFetchMe.data.user)
       // return resFetchMe.data.user;
@@ -29,10 +26,12 @@ export const registerAsync = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk('auth/login', async (input, thunkApi) => {
+export const loginAsync = createAsyncThunk('auth/loginAsync',
+ async (input, thunkApi) => {
   try {
     const res = await authService.login(input);
-    setAccessToken(res.data.accessToken);
+    console.log( '######RES####',res)
+    // setAccessToken(res.data.accessToken);
     console.log("res.data.user",res.data.user)
     console.log("res.data",res.data)
     return res.data;
@@ -76,6 +75,7 @@ const authSlice = createSlice({
       .addCase(registerAsync.pending, state => {
         state.loading = true;
       })
+
       .addCase(registerAsync.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.loading = false;
@@ -89,10 +89,16 @@ const authSlice = createSlice({
         // console.log('action.payload##',action.payload)
         // console.log('state.loading##',state.loading )
       })
-      .addCase(login.fulfilled, (state, action) => {
+      .addCase(loginAsync.fulfilled, (state, action) => {
         state.isAuthenticated = true;
         state.user = action.payload;
+        state.loading =false;
       })
+
+      .addCase(loginAsync.pending, state => {
+        state.loading = true;
+      })
+
       // .addCase(fetchMe.fulfilled, (state, action) => {
       //   state.isAuthenticated = true;
       //   state.user = action.payload;

@@ -1,12 +1,12 @@
 import LoginInput from '../components/LoginInput'
 import { useState } from "react";
-// import { LoginAsync } from '../slice/auth-slice';
+import { loginAsync } from '../slice/auth-slice';
 import { toast } from 'react-toastify';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import validateRegister from '../validator/validate-register';
 
 const initialInput = {
-  userName: '',
+  email: '',
   passWord: '',
 
 };
@@ -18,7 +18,7 @@ export default function RegisterForm({ onSuccess }) {
   const [input, setInput] = useState(initialInput);
   // const [error, setError] = useState({});
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChangeInput = e => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -34,7 +34,7 @@ export default function RegisterForm({ onSuccess }) {
       // setError({});
       console.log(input)
 
-      // await dispatch(LoginAsync(input)).unwrap();
+      await dispatch(loginAsync(input)).unwrap();
 
       toast.success('Login successfully');
       onSuccess();
@@ -47,9 +47,9 @@ export default function RegisterForm({ onSuccess }) {
     <form onSubmit={handleSubmitForm}>
       <div >
         <LoginInput
-          name="userName"
-          placeholder="Username"
-          value={input.userName}
+          name="email"
+          placeholder="email"
+          value={input.email}
           onChange={handleChangeInput}
         // isInvalid={error.userName}
         />
