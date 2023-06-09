@@ -9,7 +9,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
     return (
         <>
             {isOpen ? (
-                <div className="card w-96 bg-secondary shadow-xl z-50 m-52 absolute right-10 top-0 ">
+                <div className="card w-96 bg-secondary shadow-xl  z-50 m-52 absolute right-10 top-0 ">
                     <div className="card-body">
                         <div className="flex justify-between">
                         <h2 className="card-title text-primary text">{title}</h2>

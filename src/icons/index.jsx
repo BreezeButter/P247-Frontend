@@ -1,12 +1,12 @@
 export function Logo() {
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate hover:scale-125 duration-200">
       {/* this hidden checkbox controls the state */}
       <input type="checkbox" />
 
       {/* sun icon */}
       <svg
-        className="swap-on fill-primary w-10 h-10"
+        className="swap-on fill-primary w-10 h-10 hover:scale-125 duration-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -15,9 +15,10 @@ export function Logo() {
 
       {/* moon icon */}
       <svg
-        className="swap-off fill-primary w-10 h-10"
+        className="swap-off fill-primary w-10 h-10 hover:scale-125 duration-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
+        
       >
         <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
       </svg>
@@ -30,8 +31,8 @@ export function LoaderIcon({ className = null }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
-      height="4rem"
-      width="4rem"
+      height="10rem"
+      width="10rem"
       fill="#000"
       className={className}
     >
@@ -46,9 +47,9 @@ export function LoaderIcon({ className = null }) {
 
 
 
-export  function Dog() {
+export  function Dog({className}) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="btn btn-secondary icon icon-tabler icon-tabler-dog text-primary bg-secondary " width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" className={`btn btn-secondary icon icon-tabler icon-tabler-dog  ${className} hover:scale-125 duration-200 hover:bg-primary hover:text-white`} width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M11 5h2" />
   <path d="M19 12c-.667 5.333 -2.333 8 -5 8h-4c-2.667 0 -4.333 -2.667 -5 -8" />
@@ -64,9 +65,9 @@ export  function Dog() {
 
 
 
-export function Cat() {
+export function Cat({className}) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="btn btn-secondary icon icon-tabler icon-tabler-cat text-primary bg-secondary" width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" className={`btn btn-secondary icon icon-tabler icon-tabler-cat ${className}  hover:scale-125 duration-200 hover:bg-primary hover:text-white`} width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M20 3v10a8 8 0 1 1 -16 0v-10l3.432 3.432a7.963 7.963 0 0 1 4.568 -1.432c1.769 0 3.403 .574 4.728 1.546l3.272 -3.546z" />
   <path d="M2 16h5l-4 4" />
@@ -80,9 +81,9 @@ export function Cat() {
 
 
 
-export function Toy() {
+export function Toy({className}) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="btn btn-secondary icon icon-tabler icon-tabler-ball-football text-primary bg-secondary" width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" className={`btn btn-secondary icon icon-tabler icon-tabler-ball-football ${className} hover:scale-125 duration-200 hover:bg-primary hover:text-white`} width="80" height="80" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
   <path d="M12 7l4.76 3.45l-1.76 5.55h-6l-1.76 -5.55z" />
