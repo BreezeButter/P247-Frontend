@@ -1,6 +1,9 @@
 
 
-export default function ButtonSearch() {
+export default function ButtonSearch({ array }) {
+    const  prod  = array
+   
+
     return (
         <div className="relative">
             <ul className="menu lg:menu-horizontal bg-primary rounded-box  text-white text-xl z-10 flex ">
@@ -10,11 +13,8 @@ export default function ButtonSearch() {
                     <details >
                         <summary className=" hover:bg-slate-50 hover:text-primary rounded-xl ">Brand</summary>
                         <ul className=" text-primary hover:bg-slate-50 hover:text-primary rounded-xl ">
-                            <li ><a>SMART HEART</a></li>
-                            <li><a>BUZZ</a></li>
-                            <li><a>ROYAL CANIN</a></li>
-                            <li><a>PETDIGREE</a></li>
-                        </ul>
+                 {prod.map(el => ( <li key={el.productId} ><a>{el.brand}</a></li> ) )} 
+                   </ul>
                     </details>
                 </li>
             </ul>

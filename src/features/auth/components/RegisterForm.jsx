@@ -35,7 +35,7 @@ export default function RegisterForm({onSuccess}) {
       //   return setError(result);
       // }
       // setError({});
-      console.log(input)
+     
       
       await dispatch(registerAsync(input)).unwrap();
       

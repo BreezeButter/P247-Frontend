@@ -32,7 +32,7 @@ export default function RegisterForm({ onSuccess }) {
       //   return setError(result);
       // }
       // setError({});
-      console.log(input)
+    
 
       await dispatch(loginAsync(input)).unwrap();
 

@@ -1,4 +1,4 @@
-import { Logo } from "../icons";
+import { Logo, Shop } from "../icons";
 import { Dog, Cat, Toy } from "../icons";
 import { useState } from 'react';
 import Modal from '../components/Modal';
@@ -16,7 +16,7 @@ export default function Navbar() {
   const menus = [
     { id: 1, Icon: Dog, to: '/dog' },
     { id: 2, Icon: Cat, to: '/cat' },
-    { id: 2, Icon: Toy, to: '/toy' }
+    { id: 3, Icon: Toy, to: '/toy' }
   ];
 
   return (
@@ -54,6 +54,12 @@ export default function Navbar() {
           {userAuthDone ? (
             <>
               <div className="flex gap-4">
+                <div className="indicator">
+                  <span className="indicator-item badge badge-error">99+</span>
+                  <button className="btn btn-secondary btn-outline outline-4 ">
+                  <Shop/>
+                  </button>
+                </div>
                 <div>
                   <button
                     className="btn btn-primary hover:scale-125 duration-200 "
