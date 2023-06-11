@@ -1,6 +1,11 @@
+import AddCartButton from "../features/product/components/AddCartButton";
+import Cart from "../layouts/Cart";
 
 export default function CatPage() {
   return (
-    <div>CatPage</div>
+    <div className=" mt-32">
+      <AddCartButton/>
+      <Cart/>
+    </div>
   )
 }

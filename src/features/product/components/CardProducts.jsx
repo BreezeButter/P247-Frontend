@@ -2,20 +2,17 @@
 import { useState, useEffect } from "react";
 import store from "../../../store";
 import { selectedAsync } from './slice/product-slice'
-
-export default function CardProducts({ product }) {
-
+import AddCartButton from "./AddCartButton";
 
 
-
-    // store.dispatch(fetchAsync())
-
-
-
+export default function CardProducts({ product}) {
 
     const [selected, setSelected] = useState('')
+
+    console.log('SDSDSD',selected)
+    
     const handleSelected = (id) => {
-      
+ 
         setSelected(id);
         console.log('Clicked ID:', id);
         // Do something else with the ID
@@ -23,13 +20,13 @@ export default function CardProducts({ product }) {
 
     useEffect(() => {
         // dispatch(fetchAsync()).unwrap();
+        
         store.dispatch(selectedAsync(selected))
-
-
+    
     }, [selected])
 
     return (
-        <div onClick={() => handleSelected(product.productId)}>
+        <div>
             <div className="card w-56 bg-base-100 shadow-xl hover:scale-105 duration-200">
 
                 <figure className="px-10 pt-10 ">
@@ -37,12 +34,17 @@ export default function CardProducts({ product }) {
                 </figure>
                 <div className="card-body items-center text-center">
 
-                    <h2 className="card-title text-primary">{product.brand} <span className=" text-gray-500">#{product.foodType}</span></h2>
-                    <div className="card-actions">
+                    <h2 className="card-title text-primary">{product.brand} </h2>
+                    <div className="card-actions flex items-center justify-center">
                         <button className="btn btn-outline">{product.price}฿</button>
-                        <button className="btn btn-primary">{product.productId}</button>
-                        <button className="btn btn-success">Buy</button>
-
+                        <button className="btn"
+                         onClick={() =>{
+                            handleSelected(product.productId)
+                        }
+                       }>See Detail</button>
+                        <AddCartButton  product={product} />
+                     
+                            <button className="btn btn-success">Buy</button>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,8 @@ const initialState = {
   product: [],
   loading: false,
   error: null,
-  selected: ''
+  selected: '',
+
 };
 
 export const fetchAsync = createAsyncThunk(
@@ -40,7 +41,11 @@ export const selectedAsync = createAsyncThunk(
 const productSlice = createSlice({
   name: "product",
   initialState,
-  reducers: {},
+  reducers: {
+
+
+
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchAsync.pending, (state) => {
@@ -61,8 +66,8 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(selectedAsync.fulfilled, (state,action) => {
-        state.loading = false;
         state.selected = action.payload;
+        state.loading = false;
         console.log('DDDD',state.selected)
       })
       .addCase(selectedAsync.rejected, (state, action) => {

@@ -1,4 +1,4 @@
-import { Logo, Shop } from "../icons";
+import { Logo } from "../icons";
 import { Dog, Cat, Toy } from "../icons";
 import { useState } from 'react';
 import Modal from '../components/Modal';
@@ -7,6 +7,7 @@ import LoginForm from '../features/auth/components/LoginForm'
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MenuItem from "./ManuItem";
+import Cart from "./Cart";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -54,12 +55,7 @@ export default function Navbar() {
           {userAuthDone ? (
             <>
               <div className="flex gap-4">
-                <div className="indicator">
-                  <span className="indicator-item badge badge-error">99+</span>
-                  <button className="btn btn-secondary btn-outline outline-4 ">
-                  <Shop/>
-                  </button>
-                </div>
+                <Cart/>
                 <div>
                   <button
                     className="btn btn-primary hover:scale-125 duration-200 "

@@ -3,7 +3,7 @@ import ProductsList from '../features/product/components/ProductsList'
 import { useSelector } from 'react-redux';
 import store from '../store/index';
 import { fetchAsync } from "../features/product/components/slice/product-slice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DetailShow from "../features/product/components/DetailShow";
 // import { useDispatch } from 'react-redux';
 // import { toast } from 'react-toastify';
@@ -16,26 +16,28 @@ import DetailShow from "../features/product/components/DetailShow";
 
 
 export default function DogPage() {
+
+  
+
    useEffect( () => {
         // dispatch(fetchAsync()).unwrap();
       store.dispatch(fetchAsync())
-      
+
     },[])
 
     // store.dispatch(fetchAsync())
 
     const array = useSelector(state => state.product.product)
+
     const prodId = useSelector(state => state.product.selected)
 
- 
+    
+
+  
 
   
   
-   
-
-
-
-
+  
   return (
     <div>
       <div className="flex items-center justify-center mb-12">
@@ -49,7 +51,7 @@ export default function DogPage() {
       </div>
       <div className="grid grid-cols-3" >
         <div className="col-span-2">
-        <ProductsList array={array} />
+        <ProductsList array={array}   />
         </div>
         <div>
           <DetailShow prodId={prodId}/>
