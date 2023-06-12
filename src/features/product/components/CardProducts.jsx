@@ -4,7 +4,7 @@ import AddCartButton from "./AddCartButton";
 
 export default function CardProducts({ product,handleSelected }) {
 
-    
+        
 
     return (
         <div>

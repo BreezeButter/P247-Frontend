@@ -29,7 +29,7 @@ export const selectedAsync = createAsyncThunk(
     try {
      
       const res2 = await productService.getAllProductDogByID(input);
-      console.log('AAA',res2.data)
+   
       return res2.data;
 
     } catch (err) {
@@ -68,7 +68,7 @@ const productSlice = createSlice({
       .addCase(selectedAsync.fulfilled, (state,action) => {
         state.selected = action.payload;
         state.loading = false;
-        console.log('DDDD',state.selected)
+       
       })
       .addCase(selectedAsync.rejected, (state, action) => {
         state.error = action.payload;

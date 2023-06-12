@@ -7,11 +7,6 @@
 export default function DetailShow({prodId}) {
 
   const  prodIdShow = prodId
-  console.log("XXXXX",prodIdShow)
-
-
-
-
 
 
   return (

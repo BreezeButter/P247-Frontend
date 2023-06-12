@@ -17,9 +17,7 @@ export const registerAsync = createAsyncThunk(
         const res =  await authService.register(input);
         setAccessToken(res.data.accessToken);
         return res.data; 
-      // const resFetchMe = await authService.fetchMe();
-      // console.log(resFetchMe.data.user)
-      // return resFetchMe.data.user;
+     
     } catch (err) {
       return thunkApi.rejectWithValue(err.response.data.message);
     }
@@ -30,14 +28,12 @@ export const loginAsync = createAsyncThunk('auth/loginAsync',
  async (input, thunkApi) => {
   try {
     const res = await authService.login(input);
-    console.log( '######RES####',res)
+
 
     setAccessToken(res.data.accessToken);
-    // console.log("res.data.user",res.data.user)
-    // console.log("res.data",res.data)
+
     return res.data;
-    // const resFetchMe = await authService.fetchMe();
-    // return resFetchMe.data.user;
+
   } catch (err) {
     return thunkApi.rejectWithValue(err.response.data.message);
   }
@@ -69,10 +65,7 @@ const authSlice = createSlice({
   },
   extraReducers: builder =>
     builder
-      // .addCase(logout.fulfilled, state => {
-      //   state.isAuthenticated = false;
-      //   state.user = null;
-      // })
+
       .addCase(registerAsync.pending, state => {
         state.loading = true;
       })
@@ -81,14 +74,12 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.loading = false;
         state.user = action.payload;
-        // console.log('action.payload##',action.payload)
-        // console.log('state.user##',state.user)
+   
       })
       .addCase(registerAsync.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
-        // console.log('action.payload##',action.payload)
-        // console.log('state.loading##',state.loading )
+   
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.isAuthenticated = true;

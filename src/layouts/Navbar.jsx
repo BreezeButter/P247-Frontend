@@ -89,10 +89,12 @@ export default function Navbar() {
           </div>)}
 
         </div>
-        {modal ? (<Modal
+        {modal ?
+        (<Modal
           title="Login" isOpen={open} onClose={() => setOpen(false)}>
           <LoginForm onSuccess={() => setOpen(false)} />
-        </Modal>) : (<Modal
+        </Modal>) 
+        : (<Modal
           title="Sign up" isOpen={open} onClose={() => setOpen(false)}>
           <RegisterForm onSuccess={() => setOpen(false)} />
         </Modal>)}

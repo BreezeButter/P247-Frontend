@@ -15,19 +15,18 @@ export default function ProductsList( {array} ) {
 
   const [selected, setSelected] = useState('')
 
-    console.log('SDSDSD', selected)
+
 
     const handleSelected = (id) => {
 
         setSelected(id);
-        console.log('Clicked ID:', id);
-        // Do something else with the ID
+     
+
     };
-    // console.log(selected)
+
 
     useEffect(() => {
-        // dispatch(fetchAsync()).unwrap();
-        console.log("g")
+    
         store.dispatch(selectedAsync(selected))
 
     }, [selected])

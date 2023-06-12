@@ -1,6 +1,6 @@
 import axios from './axios';
 
 
-export const register = async input =>  await axios.post('/cart/:id', input);
+export const addCart = async input =>  await axios.post('/cart/add/', input);
       
 
