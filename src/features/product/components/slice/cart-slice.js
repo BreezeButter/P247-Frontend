@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as CartService from '../../../../api/cart'
+import { toast } from 'react-toastify'; 
 
 
 export const syncCartWithDatabase = createAsyncThunk(
@@ -7,7 +8,7 @@ export const syncCartWithDatabase = createAsyncThunk(
   async (items , thunkApi) => {
     try {
       const addItem =  {...items, quantity : 1}
-       console.log(addItem)
+    
       const response = await CartService.addCart({productId:addItem.productId, productAmount:addItem.quantity});
       return response.data;
       
@@ -34,6 +35,59 @@ export const syncCartAll = createAsyncThunk(
   } 
 );
 
+export const incrementProduct = createAsyncThunk(
+  'cart/incrementProduct',
+  async (input, thunkApi) => {
+    try {
+   
+      const response = await CartService.increment({productId:input.Product.productId});
+      const sum = response.data.reduce((acc,el)=>{
+        acc+=el.productAmount
+        return acc
+      },0)
+      return {cart: response.data, sum}
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  } 
+);
+
+export const decrementProduct = createAsyncThunk(
+  'cart/decrementProduct',
+  async (input, thunkApi) => {
+    try {
+      const response = await CartService.decrement({productId:input.Product.productId});
+      const sum = response.data.reduce((acc,el)=>{
+        acc+=el.productAmount
+        return acc
+      },0)
+      return {cart: response.data, sum}
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  } 
+);
+
+export const delProduct = createAsyncThunk(
+  'cart/delProduct',
+  async (input, thunkApi) => {
+    try {
+       console.log('first',input.Product.productId)
+      const response = await CartService.delProduct({productId:input.Product.productId});
+      const sum = response.data.reduce((acc,el)=>{
+        acc+=el.productAmount
+        return acc
+      },0)
+      return {cart: response.data, sum}
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  } 
+);
+
+
+
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
@@ -44,14 +98,6 @@ const cartSlice = createSlice({
     numCart :''
   },
   reducers: {
- 
-      increment: (state) => {
-       
-        state.numCart += 1;
-      },
-      decrement: (state) => {
-        state.numCart -= 1;
-      },
 
   },
   extraReducers: builder => {
@@ -63,6 +109,7 @@ const cartSlice = createSlice({
       .addCase(syncCartWithDatabase.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
+        toast.success('Add to cart sucess')
       })
       .addCase(syncCartWithDatabase.rejected, (state, action) => {
         state.loading = false;
@@ -77,15 +124,33 @@ const cartSlice = createSlice({
         state.error = null;
         state.cart = action.payload.cart
         state.numCart = action.payload.sum
-        console.log('state.cart',action.payload)
       })
       .addCase(syncCartAll.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(incrementProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.cart = action.payload.cart
+        state.numCart = action.payload.sum
+      })
+      .addCase(decrementProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.cart = action.payload.cart
+        state.numCart = action.payload.sum
+      })
+      .addCase(delProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.cart = action.payload.cart
+        state.numCart = action.payload.sum
+        toast.error('Delete success')
+      })
+      
   },
 });
 
-export const { addToCart,increment,decrement } = cartSlice.actions;
 
 export default cartSlice.reducer;

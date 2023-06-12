@@ -1,13 +1,15 @@
+import DecrementButton from "./DecrementButton"
+import DeleteButton from "./DeleteButton"
+import IncrementButton from "./IncrementButton"
+
+
 
 
 export default function CardOrder({ product }) {
 
   const { Product } = product
   const PricePerProd = Product.price * product.productAmount
-
-
-
-
+ 
 
 
   return (
@@ -20,8 +22,8 @@ export default function CardOrder({ product }) {
                 <div className="flex items-center space-x-3">
                   <div className="avatar">
                     <div className="w-[100px] flex items-center justify-center">
-                        <button className="btn btn-accent text-[#01722a] btn-sm text-xl m-2">+</button>
-                        <button className="btn  text-[#a3a3a3]  btn-sm text-xl m-2">-</button>
+                      <IncrementButton Product={Product}/>
+                      <DecrementButton Product={Product}/>
                     </div>
                     <div className="mask mask-squircle w-24 h-24">
                       <img src={Product.image1}
@@ -43,9 +45,7 @@ export default function CardOrder({ product }) {
                 <button className="btn btn-accent text-[#01722a] btn-xs text-xl">{PricePerProd}฿</button>
               </th>
               <td>
-                <button className="btn btn-circle">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
+                  <DeleteButton Product={Product}/>
               </td>
             </tr>
           </tbody >

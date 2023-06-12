@@ -18,19 +18,19 @@ export default function OrderPage() {
   }, [])
 
   const array = useSelector(state => state.cart.cart)
-  console.log('Cart all array1', array)
+
 
   return (
     <div>
       <div className="flex items-center justify-center mb-12  bg-primary shadow-inner">
         <div className="text-3xl font-bold  my-5 text-white">
-          <h1>Order ID#</h1>
+          <h1>Order Summary</h1>
         </div>
       </div>
       <div className="flex flex-wrap text-center items-center justify-center" >
         <div className="flex  items-center gap-4  mb-6">
          <Order />
-          <CardSum />
+          <CardSum array={array}/>
         </div>
         <div className="col-span-2 flex-col items-center  justify-center">
           <div className="flex items-center justify-center gap-6 ">
