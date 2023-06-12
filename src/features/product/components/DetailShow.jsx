@@ -40,10 +40,10 @@ export default function DetailShow({prodId}) {
           <button className="btn btn-outline">Price  {prodIdShow.price }฿</button>
         </div>
       </div>
-      <div className="flex  justify-evenly items-center  mt-16 w-96">
+      {/* <div className="flex  justify-evenly items-center  mt-16 w-96">
       <button className="btn btn-primary">Add to cart</button>
       <button className="btn btn-success">BUY</button>
-      </div>
+      </div> */}
     </div>):
     (<div> Hi </div>)}
     </div>

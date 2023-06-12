@@ -15,6 +15,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [modal, setModal] = useState('')
   const menus = [
+    
     { id: 1, Icon: Dog, to: '/dog' },
     { id: 2, Icon: Cat, to: '/cat' },
     { id: 3, Icon: Toy, to: '/toy' }

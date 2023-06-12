@@ -3,7 +3,7 @@ import ProductsList from '../features/product/components/ProductsList'
 import { useSelector } from 'react-redux';
 import store from '../store/index';
 import { fetchAsync } from "../features/product/components/slice/product-slice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import DetailShow from "../features/product/components/DetailShow";
 // import { useDispatch } from 'react-redux';
 // import { toast } from 'react-toastify';
