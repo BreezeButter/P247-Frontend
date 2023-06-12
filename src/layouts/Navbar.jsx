@@ -18,6 +18,7 @@ export default function Navbar() {
     { id: 1, Icon: Dog, to: '/dog' },
     { id: 2, Icon: Cat, to: '/cat' },
     { id: 3, Icon: Toy, to: '/toy' }
+   
   ];
 
   return (

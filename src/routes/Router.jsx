@@ -6,6 +6,8 @@ import ToyPage from "../page/ToyPage";
 import MemberPage from "../page/MemberPage";
 import AdminPage from "../page/AdminPage";
 import Container from "../layouts/Container";
+import OrderPage from "../page/OrderPage";
+import AdminPageProduct from "../page/AdminPageProduct";
 
 
 
@@ -37,8 +39,16 @@ const router = createBrowserRouter([
         element: <MemberPage />,
       },
       {
-        path: "/admin/:memberuserId",
+        path: "/admin",
         element: <AdminPage />,
+      },
+      {
+        path: "/admin/prod",
+        element: <AdminPageProduct/>
+      },
+      {
+        path: "/order",
+        element:  <OrderPage/>
       },
     ],
   },

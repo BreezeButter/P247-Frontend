@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-export default function AdminPage() {
+export default function AdminPageProduct() {
   const navigate = useNavigate();
+
   return (
     <div className="grid grid-cols-2">
       <div className="drawer lg:drawer-open">
@@ -21,7 +22,7 @@ export default function AdminPage() {
         </div>
       </div>
       <div>
-        Main
+         Productd management
       </div>
     </div>
   )

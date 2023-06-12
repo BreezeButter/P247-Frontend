@@ -32,12 +32,6 @@ export default function DogPage() {
     const prodId = useSelector(state => state.product.selected)
 
     
-
-  
-
-  
-  
-  
   return (
     <div>
       <div className="flex items-center justify-center mb-12">

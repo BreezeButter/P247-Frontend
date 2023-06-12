@@ -1,29 +1,10 @@
 
-import { useState, useEffect } from "react";
-import store from "../../../store";
-import { selectedAsync } from './slice/product-slice'
 import AddCartButton from "./AddCartButton";
 
 
-export default function CardProducts({ product}) {
+export default function CardProducts({ product,handleSelected }) {
 
-    const [selected, setSelected] = useState('')
-
-    console.log('SDSDSD',selected)
     
-    const handleSelected = (id) => {
- 
-        setSelected(id);
-        console.log('Clicked ID:', id);
-        // Do something else with the ID
-    };
-
-    useEffect(() => {
-        // dispatch(fetchAsync()).unwrap();
-        
-        store.dispatch(selectedAsync(selected))
-    
-    }, [selected])
 
     return (
         <div>
@@ -38,13 +19,13 @@ export default function CardProducts({ product}) {
                     <div className="card-actions flex items-center justify-center">
                         <button className="btn btn-outline">{product.price}฿</button>
                         <button className="btn"
-                         onClick={() =>{
-                            handleSelected(product.productId)
-                        }
-                       }>See Detail</button>
-                        <AddCartButton  product={product} />
-                     
-                            <button className="btn btn-success">Buy</button>
+                            onClick={() => {
+                                handleSelected(product.productId)
+                            }
+                            }>See Detail</button>
+                        <AddCartButton product={product} />
+
+                        <button className="btn btn-success">Buy</button>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ export default function AddCartButton({product}) {
   
     const handleIncrease = () => {
       dispatch(increaseValue(product));
+      
       console.log("AddCartButton",product)
     };
 
