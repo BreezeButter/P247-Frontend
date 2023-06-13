@@ -189,7 +189,7 @@ const cartSlice = createSlice({
         state.error = null;
         state.payment= action.payload
 
-        toast.success('Order success')
+        toast.success('Payment success')
       })
       
   },
