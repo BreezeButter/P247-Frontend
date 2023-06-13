@@ -4,6 +4,8 @@ import axios from './axios';
 export const addCart = async input =>  await axios.post('/cart/add/', input);
 export const increment = async input =>  await axios.patch('/cart/add/increment/',input);
 export const decrement = async input =>  await axios.patch('/cart/add/decrement/',input);
+export const checkOutProduct = async () =>  await axios.post('/cart/checkout/');
+export const payment = async (input) =>  await axios.post('/cart/',input);
 
 export const delProduct = async (input)=>{
   console.log('axiosssss',input)

@@ -15,7 +15,6 @@ export default function AddCartButton({product}) {
 
           dispatch(syncCartWithDatabase(product))
 
-          
     };
 
 

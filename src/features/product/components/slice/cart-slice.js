@@ -17,6 +17,7 @@ export const syncCartWithDatabase = createAsyncThunk(
     }
   } 
 );
+
 export const syncCartAll = createAsyncThunk(
   'cart/syncCartAll',
   async (_, thunkApi) => {
@@ -85,6 +86,32 @@ export const delProduct = createAsyncThunk(
   } 
 );
 
+export const checkOutProduct = createAsyncThunk(
+  'cart/checkOutProduct',
+  async (_, thunkApi) => {
+    try {
+
+      const response = await CartService.checkOutProduct();
+      console.log('checkOutProduct response.data',response.data)
+      return response.data
+     
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  } 
+);
+export const paymentAsync = createAsyncThunk(
+  'cart/paymentAsync',
+  async (input, thunkApi) => {
+    try {
+      console.log('cart/paymentAsync',input)
+      const response = await CartService.payment(input);
+      return response.data
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.response.data);
+    }
+  } 
+);
 
 
 
@@ -95,7 +122,9 @@ const cartSlice = createSlice({
     cart: [], 
     loading: false, 
     error: null,
-    numCart :''
+    numCart :'',
+    order:'',
+    payment:''
   },
   reducers: {
 
@@ -147,6 +176,20 @@ const cartSlice = createSlice({
         state.cart = action.payload.cart
         state.numCart = action.payload.sum
         toast.error('Delete success')
+      })
+      .addCase(checkOutProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.order = action.payload
+
+        toast.success('Order success')
+      })
+      .addCase(paymentAsync.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.payment= action.payload
+
+        toast.success('Order success')
       })
       
   },

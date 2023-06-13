@@ -8,6 +8,7 @@ import AdminPage from "../page/AdminPage";
 import Container from "../layouts/Container";
 import OrderPage from "../page/OrderPage";
 import AdminPageProduct from "../page/AdminPageProduct";
+import PaymentPage from "../page/PaymentPage";
 
 
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/order",
         element:  <OrderPage/>
+      },
+      {
+        path: "/payment",
+        element:  <PaymentPage/>
       },
     ],
   },

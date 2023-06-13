@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux"
 
 export default function CardSum({array}) {
+
+   const userKa = useSelector(state=> state.auth.user)
+   
 
 
   const amountSum = array.reduce((acc,el)=>{
@@ -17,8 +21,8 @@ export default function CardSum({array}) {
     <div className="stats stats-vertical lg:stats-horizontal shadow ">
 
       <div className="stat">
-        <div className="stat-title">Order ID</div>
-        <div className="stat-value">1234</div>
+        <div className="stat-title">Member owner</div>
+        <div className="stat-value">{userKa.userName}</div>
 
       </div>
 

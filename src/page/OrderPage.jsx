@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { syncCartAll } from '../features/product/components/slice/cart-slice'
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Order from "../icons";
+import {Order} from "../icons";
+import CheckOutButton from "../features/order/CheckOutButton";
 
 
 export default function OrderPage() {
@@ -29,17 +30,21 @@ export default function OrderPage() {
       </div>
       <div className="flex flex-wrap text-center items-center justify-center" >
         <div className="flex  items-center gap-4  mb-6">
-         <Order />
-          <CardSum array={array}/>
+          <Order />
+          <CardSum array={array} />
         </div>
         <div className="col-span-2 flex-col items-center  justify-center">
           <div className="flex items-center justify-center gap-6 ">
           </div>
 
-           <hr />
+          <hr />
           <OrderList array={array}
             className=' m-auto' />
         </div>
+      </div>
+      
+      <div className="flex item justify-center my-4">
+        <CheckOutButton />
       </div>
     </div>
 
