@@ -11,7 +11,11 @@ export const syncCartWithDatabase = createAsyncThunk(
     
       const response = await CartService.addCart({productId:addItem.productId, productAmount:addItem.quantity});
       console.log(response.data)
-      return response.data;
+      const sum = response.data.reduce((acc,el)=>{
+        acc+=el.productAmount
+        return acc
+      },0)
+      return {cart: response.data, sum}
       
       
     } catch (error) {
@@ -142,6 +146,7 @@ const cartSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = action.payload
+        state.numCart = action.payload.sum
         toast.success('Add to cart sucess')
       })
       .addCase(syncCartWithDatabase.rejected, (state, action) => {

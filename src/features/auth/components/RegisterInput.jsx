@@ -18,7 +18,7 @@ export default function RegisterInput({
       name={name}
       value={value}
       onChange={onChange}
-      readOnly
+      
     />
   )
 }

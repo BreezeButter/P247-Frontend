@@ -64,19 +64,23 @@ export const imageAsync = createAsyncThunk('auth/imageAsync', async (input, thun
   }
 
 });
+export const userEditAsync = createAsyncThunk('auth/userEditAsync', async (input, thunkApi) => {
+  try {
+    console.log(input)
+    const res = await authService.editUser(input);
+    console.log(res.data)
+    return res.data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.response.data.message);
+  }
+
+});
 
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    // updateProfileImage: (state, action) => {
-    //   state.user.profileImage = action.payload;
-    // },
-    // updateCoverImage: (state, action) => {
-    //   state.user.coverImage = action.payload;
-    // }
-  },
+  reducers: {  },
   extraReducers: builder =>
     builder
 
@@ -117,6 +121,15 @@ const authSlice = createSlice({
         toast.success('Upload Success')
       })
       .addCase(imageAsync.pending, state => {
+        state.loading = true;
+      })
+      .addCase(userEditAsync.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.loading = false;
+        toast.success('Edit Success')
+      })
+      .addCase(userEditAsync.pending, state => {
         state.loading = true;
       })
       .addCase(fetchMe.rejected, (state, action) => {

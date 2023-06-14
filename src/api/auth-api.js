@@ -9,4 +9,5 @@ export const register = async input => {
 }
 export const login = input => axios.post('/auth/login', input);
 export const uploadImage = input => axios.put('/auth/upload', input);
+export const editUser = input => axios.patch('/auth/edit', input);
 export const fetchMe = () => axios.get('/auth/me');

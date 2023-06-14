@@ -33,9 +33,9 @@ export default function MemberInfo() {
         </ul>
       </div>
       <div>
-        <h1 className=' font-bold text-lg mb-4'>Member Information</h1>
+        <h1 className=' font-bold text-lg mb-4'>Edit Member Information</h1>
       </div>
-      <div >
+      <div > 
         <FormMember />
       </div>
     </div>

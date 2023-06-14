@@ -4,24 +4,13 @@ import { useState, useRef } from "react";
 import RegisterInput from "../features/auth/components/RegisterInput";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
-import {imageAsync} from '../features/auth/slice/auth-slice'
+import {imageAsync, userEditAsync} from '../features/auth/slice/auth-slice'
 
 
-// const initialInput = {
-//     userName: '',
-//     firstName: '',
-//     lastName: '',
-//     email: '',
-//     passWord: '',
-//     mobile: '',
-//     address: '',
-//     country: '',
-//     postcode: '',
-
-// };
 
 export default function FormMember() {
     
+   
 
     const userInfo = useSelector(state=>state.auth.user) 
     console.log(userInfo)
@@ -39,7 +28,16 @@ export default function FormMember() {
 
     const handleChangeInput = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
+
     };
+
+    const handleOnSubmit =(e)=>{
+
+        e.preventDefault();
+
+        dispatch(userEditAsync(input))
+
+    }
 
     const editImageProfile = async (e) => {
 
@@ -94,7 +92,8 @@ export default function FormMember() {
                 </div>
             </div>
             <div>
-                <form  >
+
+                <form onSubmit={handleOnSubmit}>
                     <div className="grid grid-cols-2 gap-5">
 
                         <RegisterInput
