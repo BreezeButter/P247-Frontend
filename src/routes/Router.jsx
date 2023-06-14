@@ -7,7 +7,6 @@ import MemberPage from "../page/MemberPage";
 import AdminPage from "../page/AdminPage";
 import Container from "../layouts/Container";
 import OrderPage from "../page/OrderPage";
-import AdminPageProduct from "../page/AdminPageProduct";
 import PaymentPage from "../page/PaymentPage";
 import MemberInfo from "../features/auth/components/MemberInfo";
 import ProtectedRoute from "../features/auth/components/ProtectedRoute";
@@ -40,21 +39,21 @@ const router = createBrowserRouter([
       {
         path: "/member/order",
         element: (
-          <ProtectedRoute>
+        <ProtectedRoute>
         <MemberPage />
         </ProtectedRoute>)
       },
       {
         path: "/member/info",
-        element: <MemberInfo />,
+        element: (
+          <ProtectedRoute>
+            <MemberInfo />
+          </ProtectedRoute>
+        )
       },
       {
         path: "/admin",
         element: <AdminPage />,
-      },
-      {
-        path: "/admin/prod",
-        element: <AdminPageProduct/>
       },
       {
         path: "/order",

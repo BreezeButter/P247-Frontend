@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import FormMember from "../../../components/FormMember";
 import { logout } from '../slice/auth-slice'
 import { useDispatch } from 'react-redux';
+import { toast } from "react-toastify";
 
 export default function MemberInfo() {
 
@@ -26,7 +27,15 @@ export default function MemberInfo() {
             </a>
           </li>
           <li >
-            <a className="tooltip" data-tip="Log out" onClick={() => dispatch(logout())}>
+            <a className="tooltip" data-tip="Log out" onClick={() => {
+              dispatch(logout())
+              navigate('/')
+              toast.info('Already Logout')
+              setTimeout(() => {
+              location.reload()
+              }, 2500)
+            }
+            }>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </a>
           </li>

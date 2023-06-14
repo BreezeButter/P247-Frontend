@@ -8,8 +8,8 @@ export default function OrderContainer({ orderList }) {
 
     return (
         <div className="overflow-x-auto">
-            <table className="table table-lg table-pin-rows table-pin-cols text-lg">
-                <thead>
+            <table className="table table-lg table-pin-rows table-pin-cols text-2xl">
+                <thead className=" text-lg">
                     <tr>
                         <td>OrderId</td>
                         <td>ProductName</td>

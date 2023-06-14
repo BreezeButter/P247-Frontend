@@ -16,7 +16,9 @@ export const registerAsync = createAsyncThunk(
   async (input, thunkApi) => {
     try {
         const res =  await authService.register(input);
+
         setAccessToken(res.data.accessToken);
+        
         return res.data; 
      
     } catch (err) {

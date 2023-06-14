@@ -7,13 +7,14 @@
 export default function DetailShow({prodId}) {
 
   const  prodIdShow = prodId
-
+  console.log(prodId)
+  const defaultImg = 'https://media.istockphoto.com/id/1423410490/vector/pet-food-dog-food-and-pet-food-feeds-vectors.jpg?s=612x612&w=0&k=20&c=Jo9lCrCzYCjeLuZDXDgoIASX8nZz8efNqvEXJGI23vc='
 
   return (
     <div>
     {prodIdShow ? (<div >
       <div className="card w-96 bg-base-100 shadow-xl p-12">
-        <figure><img src={ prodIdShow.image1 } alt="img" /></figure>
+        <figure><img src={ prodIdShow.image1||defaultImg } alt="img" /></figure>
         <div className="card-body flex items-center justify-center">
           <h2 className="card-title">{prodIdShow.brand}</h2>
           <p>{prodIdShow.productName}</p>

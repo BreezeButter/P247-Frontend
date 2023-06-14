@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "../components/Card";
 import LandingHead from "../components/LandingHead";
 
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+
   return (
     <div className="flex flex-col">
       <div>
@@ -19,15 +21,18 @@ export default function LandingPage() {
           <Card
             img="/src/assets/dog-card.jpg"
             pet="DOG"
-            type="🍪#Food" />
+            type="🍪#Food" 
+            onClick={()=>navigate('/dog')}/>
           <Card
             img="/src/assets/cat-card.jpg"
             pet="CAT"
-            type="🍪#Food" />
+            type="🍪#Food" 
+            onClick={()=>navigate('/cat')}/>
           <Card
             img="/src/assets/toy-card.jpg"
             pet="PET"
-            type="🪀#Toy" />
+            type="🪀#Toy"
+            onClick={()=>navigate('/toy')} />
         </div>
       </div>
   

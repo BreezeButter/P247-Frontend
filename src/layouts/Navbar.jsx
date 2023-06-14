@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import MenuItem from "./ManuItem";
 import Cart from "./Cart";
 
+
 export default function Navbar() {
   const navigate = useNavigate();
   const userAuthDone = useSelector(state => state.auth.isAuthenticated)
@@ -33,7 +34,7 @@ export default function Navbar() {
             <div >
               <Logo />
             </div>
-            <a className="text-primary  text-3xl hover:scale-125 duration-200">24/7</a>
+            <a className="text-primary  text-3xl hover:scale-125 duration-200">P 24/7</a>
           </div>
           <div className="navbar-center gap-4 flex">
             {/* <div onClick={()=>navigate("/dog")}>

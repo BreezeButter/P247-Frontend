@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 // import store from '../store/index';
 import { useDispatch } from "react-redux";
 import { fetchAsync } from "../features/product/components/slice/product-slice";
-import {syncCartAll} from "../features/product/components/slice/cart-slice"
+
 import { useEffect } from "react";
 import DetailShow from "../features/product/components/DetailShow";
 // import { useDispatch } from 'react-redux';

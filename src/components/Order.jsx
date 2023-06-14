@@ -14,7 +14,7 @@ export default function Order(list) {
             <td>{el.list.productAmount}</td>
             <td>{sumPrice}</td>
             <td>{el.list.Product.updatedAt}</td>
-            <td><div className="badge badge-outline">default</div></td>
+            <td><div className="badge badge-outline badge-success">Success</div></td>
         </tr>
 
     )

@@ -25,7 +25,7 @@ export default function CardProducts({ product,handleSelected }) {
                             }>See Detail</button>
                         <AddCartButton product={product} />
 
-                        <button className="btn btn-success">Buy</button>
+                        {/* <button className="btn btn-success">Buy</button> */}
                     </div>
                 </div>
             </div>

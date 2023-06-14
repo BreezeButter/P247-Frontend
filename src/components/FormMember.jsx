@@ -1,14 +1,17 @@
 
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import RegisterInput from "../features/auth/components/RegisterInput";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
-import {imageAsync, userEditAsync} from '../features/auth/slice/auth-slice'
+import {imageAsync, userEditAsync, fetchMe} from '../features/auth/slice/auth-slice'
+
 
 
 
 export default function FormMember() {
+
+  
     
    
 
@@ -53,6 +56,11 @@ export default function FormMember() {
             toast.error('Payment Error')
         }
     }
+    // useEffect(()=>{
+
+        // dispatch(fetchMe())
+
+    // },[])
 
 
 

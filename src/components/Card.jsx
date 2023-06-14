@@ -1,6 +1,6 @@
 
 
-export default function Card({ img,pet,type, btn ="Buy"}) {
+export default function Card({ img,pet,type, btn ="Buy",onClick}) {
     return (
         <div >
             <div className="card w-96 bg-base-100 shadow-xl hover:scale-110 duration-200 ">
@@ -11,7 +11,7 @@ export default function Card({ img,pet,type, btn ="Buy"}) {
             
                     <h2 className="card-title text-primary">{pet} <span className=" text-gray-500">{type}</span></h2>
                     <div className="card-actions">
-                        <button className="btn btn-primary">{btn}</button>
+                        <button className="btn btn-primary" onClick={onClick}>{btn}</button>
                     </div>
                 </div>
             </div>
