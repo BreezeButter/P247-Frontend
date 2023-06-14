@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import {paymentAsync} from '../../features/product/components/slice/cart-slice'
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 
 export default function UploadForm() {
+
 
     const inputRef = useRef("")
     const [file, setFile] = useState(null)
@@ -34,9 +35,6 @@ export default function UploadForm() {
         }catch(err){
             toast.error('Payment Error')
         }
-
-       
-
      }
         
 
@@ -50,7 +48,7 @@ export default function UploadForm() {
                     <h2 className="card-title">Please upload here !!!</h2>
                     <div className="card-actions  items-center justify-center my-4">
                         <label className="block">
-                            <span className="sr-only">Choose profile photo</span>
+                            <span className="sr-only">Choose photo</span>
                             <input type="file"
                                 ref={inputRef}
                                 onChange={e => {
@@ -58,7 +56,6 @@ export default function UploadForm() {
                                         setFile(e.target.files[0])
                                     }
                                 }}
-
                                 className="block w-full text-sm text-slate-500
                                               file:mr-4 file:py-2 file:px-4
                                              file:rounded-full file:border-0

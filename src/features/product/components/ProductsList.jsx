@@ -8,37 +8,42 @@ import { selectedAsync } from './slice/product-slice'
 
 
 
- 
-export default function ProductsList( {array} ) {
 
-  const  prod  = array
+export default function ProductsList({ array }) {
+
+  const prod = array
 
   const [selected, setSelected] = useState('')
 
 
 
-    const handleSelected = (id) => {
+  const handleSelected = (id) => {
 
-        setSelected(id);
-     
-
-    };
+    setSelected(id);
 
 
-    useEffect(() => {
-    
-        store.dispatch(selectedAsync(selected))
+  };
 
-    }, [selected])
-   
- 
+
+  useEffect(() => {
+
+    store.dispatch(selectedAsync(selected))
+
+  }, [selected])
+
+
 
   return (
-    <div 
-    className=" flex flex-wrap gap-6 m-2">
-      {prod.map(el => (
-         <CardProducts key={el.productId} product={el} handleSelected={handleSelected} />
-      ))}
+    <div
+      className=" flex flex-wrap gap-6 m-2">
+      {prod.map(el => {
+        return ( <div key={el.productId}>
+          <CardProducts  product={el} handleSelected={handleSelected} />
+
+        </div>)
+      }
+
+      )}
     </div>
   )
 }

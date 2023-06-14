@@ -61,7 +61,7 @@ export default function Navbar() {
                 <div>
                   <button
                     className="btn btn-primary hover:scale-125 duration-200 "
-                    onClick={() => navigate("/member")}> Member</button>
+                    onClick={() => navigate("/member/order")}> Member</button>
                 </div>
                 <div className="avatar">
                   <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

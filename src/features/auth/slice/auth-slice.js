@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import * as authService from '../../../api/auth-api';
 import { removeAccessToken, setAccessToken } from '../../../utils/localstorage';
+import { toast } from 'react-toastify'; 
 
 const initialState = {
   isAuthenticated : false,
@@ -46,11 +47,24 @@ export const fetchMe = createAsyncThunk('auth/fetchMe', async (_, thunkApi) => {
   } catch (err) {
     return thunkApi.rejectWithValue(err.response.data.message);
   }
+
 });
 
-// export const logout = createAsyncThunk('auth/logout', async () => {
-//   removeAccessToken();
-// });
+export const logout = createAsyncThunk('auth/logout', async () => {
+  removeAccessToken();
+  
+});
+
+export const imageAsync = createAsyncThunk('auth/imageAsync', async (input, thunkApi) => {
+  try {
+    const res = await authService.uploadImage(input);
+    return res.data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.response.data.message);
+  }
+
+});
+
 
 const authSlice = createSlice({
   name: 'auth',
@@ -95,6 +109,15 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.user = action.payload;
         state.loading = false;
+      })
+      .addCase(imageAsync.fulfilled, (state, action) => {
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.loading = false;
+        toast.success('Upload Success')
+      })
+      .addCase(imageAsync.pending, state => {
+        state.loading = true;
       })
       .addCase(fetchMe.rejected, (state, action) => {
         state.error = action.payload;

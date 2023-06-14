@@ -10,7 +10,9 @@ export const syncCartWithDatabase = createAsyncThunk(
       const addItem =  {...items, quantity : 1}
     
       const response = await CartService.addCart({productId:addItem.productId, productAmount:addItem.quantity});
+      console.log(response.data)
       return response.data;
+      
       
     } catch (error) {
       return thunkApi.rejectWithValue(error.response.data);
@@ -124,7 +126,8 @@ const cartSlice = createSlice({
     error: null,
     numCart :'',
     order:'',
-    payment:''
+    payment:'',
+    paymentSuccess:false
   },
   reducers: {
 
@@ -135,9 +138,10 @@ const cartSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(syncCartWithDatabase.fulfilled, (state) => {
+      .addCase(syncCartWithDatabase.fulfilled, (state,action) => {
         state.loading = false;
         state.error = null;
+        state.items = action.payload
         toast.success('Add to cart sucess')
       })
       .addCase(syncCartWithDatabase.rejected, (state, action) => {
@@ -187,9 +191,15 @@ const cartSlice = createSlice({
       .addCase(paymentAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.payment= action.payload
+        state.payment= action.payload;
+        state.paymentSuccess =true;
 
         toast.success('Payment success')
+      })
+      .addCase(paymentAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.paymentSuccess =false;
       })
       
   },

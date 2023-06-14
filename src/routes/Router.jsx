@@ -9,6 +9,8 @@ import Container from "../layouts/Container";
 import OrderPage from "../page/OrderPage";
 import AdminPageProduct from "../page/AdminPageProduct";
 import PaymentPage from "../page/PaymentPage";
+import MemberInfo from "../features/auth/components/MemberInfo";
+import ProtectedRoute from "../features/auth/components/ProtectedRoute";
 
 
 
@@ -36,8 +38,15 @@ const router = createBrowserRouter([
         element: <ToyPage />,
       },
       {
-        path: "/member",
-        element: <MemberPage />,
+        path: "/member/order",
+        element: (
+          <ProtectedRoute>
+        <MemberPage />
+        </ProtectedRoute>)
+      },
+      {
+        path: "/member/info",
+        element: <MemberInfo />,
       },
       {
         path: "/admin",

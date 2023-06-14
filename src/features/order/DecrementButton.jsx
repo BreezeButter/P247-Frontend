@@ -4,7 +4,8 @@ import {decrementProduct} from   '../../features/product/components/slice/cart-s
 export default function DecrementButton(input) {
 
   const dispatch = useDispatch();
-
+  
+  
 
   const handleSelect = () => {
     dispatch(decrementProduct(input))
